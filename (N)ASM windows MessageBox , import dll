@@ -1,0 +1,89 @@
+(N)ASM windows MessageBox , import dll
+
+Because I use Linux as my primary Operating system, So i love to use cross-platform application.
+I am not an asm coder, in past i have searched a lots for ASM(nasm) code of MessagBox() function Example just to get started. Because everything was fairly new to me(i had no clue!). So i just decided to post a simple example code which was my first assembly program for windows, in case someone is searching for basic example for getting started. I hope it will be useful to someone who is in same situation as i was!
+First Example:
+
+extern _ExitProcess@4
+extern _MessageBoxA@16
+
+global _main
+
+section .data
+msgb db "salope.com!",0
+title db "Security Research!",0
+section .text
+
+_main:
+
+    push dword 0x00
+    ;mov     esi,msgb
+    ;push esi
+    push dword title
+    push dword msgb
+    push dword 0
+    call _MessageBoxA@16
+    
+    push 0
+    call _ExitProcess@4
+
+“extern” is importing symbol from other module. In our case the symbols are _ExitProcess@4 and _MessageBoxA@16. There are three things we see are:
+
+1. underscore before MessageBoxA .
+2. @4/16 
+The underscore used for calling the function in C style, Linux does not have underscore(_). And @4/16 indicating that how many parameter for the calling function. Such as MessageBox has 4 parameters. Each parameters are 4 bytes so 4 parameters are (4*4) 16bytes=4 . Extra “A” for ANSI-C .
+
+“global _main” , declaring it as startup of our asm instructions(C style).
+
+“Section .data” , you know what is it! Declaring uninitialized data such as variable.
+in “section .text” (our codes) there are all parameters pushed to stack in reverse mode. 
+I have called MessageBox(see here: http://msdn.microsoft.com/en-us/library/windows/desktop/ms645505%28v=vs.85%29.aspx ). 
+
+The MessageBox in C should be like this:
+
+MessageBox(NULL,msgb,title,0x00000000L)
+
+in ASM it is opposite:
+
+First pushing the 0x00000000L(MB_OK) to stack. Currently top of the stack!
+Then pushing “title” . “title” is now top of the stack.
+Then pushing “msgb”. Same as above. “msgb(string)” top of the stack .
+And last push is 0 . Same as above.
+At last call the function.
+
+Stack is LIFO(Last in first out). So it is now:
+
+MessageBox(NULL,msgb,title,0x00000000L)
+ It is always always good idea terminating the current process so ExitProccess() function has been called when MessageBox() operation is completed.
+
+Compile the code :
+nasm -fwin32 msg.asm
+gcc msg.obj -o msg.exe
+
+But I want to import specific dll because all dlls are not loaded so some API function may not work if i can’t load the dll in my code. 
+How i do this ? “import MessageBoxA@16 user32.dll” ? 
+I think this is not going to happen for me because nasm will not generate win32 object file(Perhaps issue). 
+So i need to work with obj (nasm -fobj msg.asm) but another issue is gcc won’t compile the obj file.. 
+I used ALINK (Download: http://alink.sourceforge.net/), This what we want instead using gcc/LD (maybe)? But still LD can be used to compile it by linking library with (-l) . Here is the code i have assembled with nasm and compiled with alink.exe:
+
+import MessageBoxA user32.dll ;Include the dll user32.dll
+extern MessageBoxA          ; Now calling external symbol without underscore.... 
+
+section .data               
+msgme   db "Hi",0           ;Say "Hi" to salope.com
+
+section .text use32 CLASS=CODE          ;"use32 CLASS=CODE for telling the other linker(Such as alink.exe) that program for 32bit
+
+..start:                    ; ..start (not _start) for other linker for start of the code
+
+    push    dword   0x00    ; MB_OK
+    mov     esi,msgme       ;esi="Hi"
+    push    esi             ;"Hi" is now top of the stack, second paramaters title
+    push    dword   msgme   ; Say "Hi"
+    push    dword   0       ;Reserve 
+    call    [MessageBoxA]   ;Call the Function
+
+;nasm -fobj msg2.asm
+;alink -oPE msg2.obj
+
+ If we use ld(with gcc) then our command should be ld -o what.exe what.obj -luser32.dll whereas alink.exe -oPE what.exe but nasm. For alink we don’t need to declare how many parameters , underscore etc and for ld we need to declare all the required things and extra option “-l” to link dll.   
