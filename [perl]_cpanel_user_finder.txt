@@ -1,0 +1,62 @@
+#!/usr/bin/perl
+#############################################
+#     Coded By Mauritania Attacker       
+###########################################
+
+        
+    
+        use LWP::Simple;
+                    
+                    
+                    
+                    print "
+****************************************************
+* Cpanel User Finder      *
+****************************************************
+* Coded by Mauritania Attacker               *
+****************************************************";
+                    
+                    print "\n\nIP of Server -> ";
+                    chomp ($ip = <>);
+                    print "Output -> ";
+                    chomp ($out = <>);
+                    print "\n[~] Downloading Data ....\n";
+                    sleep(1);
+                    $URL = "http://www.dedicatedornot.com/xml/".$ip;
+                    $content = get($URL);
+                    @name = split(/<sites>/,$content);
+                    $name = @name[1];
+                    @name = split(/<\/sites>/,$name);
+                    $name = @name[0];
+                    $name =~ s/<site>//g;
+                    $name =~ s/<\/site>//g;
+                    $name =~ s/www.//g;
+                    $name =~ s/^.com//g;
+                    $name =~ s/^\s+//g;
+                    open(IP,">ip.txt");
+                    print IP "$name";
+                    close(IP);
+                    sleep(1);
+                
+
+        print "[~] Parsing Data ...\n";
+        chomp ($data_file = "ip.txt");
+        sleep(1);
+        open(DAT, $data_file) || die("Could not open file!");
+        @raw_data=<DAT>; 
+
+        foreach $res (@raw_data)
+            {
+                 chomp($res);
+                 $line=$res;
+                 my $new_line =  substr( $line, 0,10);
+                #my $new_line=$line;
+                 $new_line =~ s/\.//g;
+                $new_line =~ s/^\s+//g;
+                 
+                open(DA, ">>$out") || print "Can't Open File. Try chmod 777 directory<br><br>";
+                print DA "$new_line\n";
+                close(DA);
+            
+            } open(add,">>$out");print add "Greetz to AnonGhost";close(add);
+                print "[~] Done .\n"

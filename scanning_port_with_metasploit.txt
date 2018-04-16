@@ -1,0 +1,27 @@
+##################################################JokerSecurity#########################################################
+# Title : Scanning port with Metasploit
+# Tested On : [ Kali-Linux ]
+# MyChannel Youtube : https://www.youtube.com/channel/UCPRRAzu8dMWxChn-RruC-eg/videos 
+# Myblog : http://kader-information.blogspot.com/ 
+# Link Video : https://www.youtube.com/watch?v=LQIG_MYdb50&feature=youtu.be
+###################### 
+# [+] COMMENDS : 
+###################### 
+db_status
+search portscan
+use auxiliary/scanner/portscan/syn
+show options
+set RHOSTS ....
+set THREADS 10
+run
+services
+
+subscribe for my channel and page in facebook 
+
+# My Blogger : http://kader-information.blogspot.com/ 
+
+# Page FacebOOk : https://www.facebook.com/AnonymousPalestine.vip 
+
+By <3
+
+##################################################JokerSecurity#########################################################
